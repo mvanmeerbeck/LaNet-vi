@@ -3,6 +3,8 @@ log/*
 # but please keep the folder
 !log/.keep
 
+lanet
+
 # Prerequisites
 *.d
 
