@@ -1,0 +1,43 @@
+KCores_Component of core 0
+X: 0
+Y: 0
+R: 4.55498
+U: 1
+Rho: -1
+Phi: 0
+KCores_Component cardinal: 11
+KCores_Component of core 1
+X: 0
+Y: 0
+R: 3.55498
+U: 1
+Rho: 0
+Phi: 1.29818
+KCores_Component cardinal: 11
+ Host 6, x=-3.51119 y=-0.556283 rho=3.55498 phi=3.29872
+ Host 5, x=-3.51119 y=-0.556284 rho=3.55498 phi=3.29872
+ Host 11, x=-0.987413 y=3.4151 rho=3.55498 phi=1.85225
+ Host 10, x=-3.50227 y=-0.609941 rho=3.55498 phi=3.31402
+ KCores_Component of core 2
+ X: 0
+ Y: 0
+ R: 2.55498
+ U: 1
+ Rho: 0
+ Phi: 1.15405
+ KCores_Component cardinal: 7
+  Host 9, x=-2.5171 y=-0.438367 rho=2.55498 phi=3.31402
+  Host 7, x=0.16187 y=-2.54985 rho=2.55498 phi=-1.5074
+  Host 8, x=0.161871 y=-2.54985 rho=2.55498 phi=4.77579
+  KCores_Component of core 3
+  X: 0
+  Y: 0
+  R: 1.55498
+  U: 1
+  Rho: 0
+  Phi: 1.5708
+  KCores_Component cardinal: 4
+   Host 1, x=1.22273 y=0.242991 rho=1.24664 phi=0.196173
+   Host 2, x=0.0874935 y=-1.37823 rho=1.381 phi=-1.5074
+   Host 3, x=-1.53373 y=-0.24299 rho=1.55286 phi=3.29872
+   Host 4, x=-0.398489 y=1.37823 rho=1.43468 phi=1.85225

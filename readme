@@ -1,0 +1,136 @@
+LaNet-vi 3.0.1
+--------------
+
+Large scale networks visualization tool using k-core and k-dense (m-core) decomposition.
+
+Software license: Academic Free License (AFL) [see afl-3.0.txt] 
+Images license: Creative Commons License (CCL) [see:
+             http://creativecommons.org/licenses/by-nc/2.0/]
+
+http://xavier.informatics.indiana.edu/lanet-vi/
+
+Developers: Mariano Beiró (b) 
+            J. Ignacio Alvarez-Hamelin (a,b)
+
+             (a) CONICET, Argentina
+             (b) Facultad de Ingeniería, Universidad de Buenos Aires
+                 Argentina (http://www.fi.uba.ar)
+             
+_____________________________________________________________________
+
+Index:
+     1) Requirements and Installation 
+     2) Using LaNet-vi
+     3) Brief description of LaNet-vi
+_____________________________________________________________________
+_____________________________________________________________________
+
+
+===1) Requirements and Installation==================================
+
+Software license: Academic Free License (AFL) [see afl-3.0.txt] 
+Images license: Creative Commons License (CCL) [see:
+             http://creativecommons.org/licenses/by-nc/2.0/]
+
+You have to install:
+
+1) povray
+	http://www.povray.org/download/
+
+2) g++ (Linux) or MinGW (Windows)
+
+3) (optional) Java JVM , version 1.4 or greater (only if you want to use LaNet Visualizer to see png files)
+	http://java.sun.com
+	
+4) (optional) rsvg	(only if you want SVG graphics, and only for Linux)
+
+5) BLAS Library
+_____________________________________________________________________
+
+===2) Using LaNet-vi=================================================
+
+./lanet [arguments]
+
+Arguments can appear in any order:
+
+	-input <file>: Name of input file containing the network edges. Required.
+	-decomp kcores|kdenses: Type of decomposition to be applied. Optional. Possible values: 'kcores', 'kdenses' (see parameter '-measure'). Default: 'kcores'.
+	-names <file>: Name of input file containing the nodes' names. A name '0' indicates LaNet to show the nodes' numbers. Optional.
+	-font <value>: Zoom in font for nodes' names. Default: 1.0. Optional.
+	-output <file>: Name of output .pov and .png files. Optional. Default: <inputFileName>.pov and <inputFileName>.png
+	-coresfile <file>: Generates a k-core decomposition file with (node number, shell-index). Optional. Default: no file
+	-colorsFile <file>: Name of input file containing colors for painting each node. Format: <node> <red> <green> <blue>. RGB values must be in the range [0.00-1.00]. Optional. Default: no file
+	-coordDistributionAlgorithm: Algorithm for the distribution of components. Possible values: 'classic', 'pow', 'log'. Optional. Default: 'classic'.
+	-logfile: Generate log files in log directory. Optional.
+	-logstdout: Generate log information on stdout. Optional.
+	-multigraph: Allows repeated edges.  Combined with 'weighted' allows to specify repeated edges as weight. Optional.
+	-weighted: Allows weights on edges (for weighted graphs). Combined with 'multigraph' allows to specify repeated edges as weight (in this case weight must be integer). Optional.
+	-strengthsIntervals: How to build p-function intervals on weighted graphs. Possible values: 'equalNodesPerInterval' or 'equalIntervalSize' or 'equalLogIntervalSize'. Optional. Default: equalIntervalSize
+	-maximumStrength: Upper limit for the strength intervals. May be useful for normalizing pictures of different networks. Optional. Default: NONE
+	-granularity: Amount of groups in weighted graphs. Optional. Default: maximum degree
+	-bckgnd <value>: Background color. Possible values: 'white' and 'black'. Optional. Default: white
+	-color <value>: Graph color. Possible values: 'col', 'bw' (black and white, one scale) and 'bwi' (black and white, interlaced scale). Optional. Default: col
+	-eps <value>: Epsilon. Controls the possibility of rings overlapping. Used to tune image's rendering. Optional. Default: 0.18
+	-delta <value>: Delta. Controls distance between components in graphical visualization. Optional. Default: 1.3
+	-gamma <value>: Gamma. Controls the component's diameter. Optional. Default: 1.5
+	-fromlayer <value>: Considers the graph induced from this layer up to the center. Optional. Default: 0
+	-edges <value>: Percent of visible edges. Value: 0.0 - 1.0. Optional. Default: 0.0
+	-minedges <value>: Minimum number of visible edges. Value: Integer. Optional. Default: 1000
+	-W <value>: Image width in pixels. Optional. Default: 800
+	-H <value>: Image height in pixels. Optional. Default: 600
+	-window <hstart> <hend> <vstart> <vend>: Defines a window for rendering. hstart and hend are values between 0.0 and 1.0 defining a percentage of width. The same for vstart and vend respecting height. Default: 0.0 1.0 0.0 1.0 (whole picture)
+	-u <value>: Unit length. Optional. Default: 1.0
+	-net: Only for use with Network Workbench (http://nwb.slis.indiana.edu).
+	-java: Shows the visualization in a window (Requires java).
+	-render <renderer>: Selects the render engine. Possible values: 'povray' and 'svg'. Default: povray
+	-opacity <value>: Selects the edges opacity. Only for SVG graphics. Range: 0.0-1.0. Optional. Default: 0.2
+	-nocliques: Omits cliques in central core.
+	-drawCircles: Draws circles for the components' borders.
+	-alpha: Constant on the formula for the component ratio as a function of its weight.
+	-beta: Exponent on the formula for the component ratio as a function of its weight.
+	-seed: Seed for the components' distribution algorithm.
+	-ratioConstant: Constant adjusting the node size. Optional. Default: Auto-adjusted.
+	-kconn: Computes k-connectivity.
+	-kconntype: k-connectivity type. Possible values: 'strict' and 'wide'. Default: wide
+	-connectivity: Finds real connectivity between all pairs of nodes. Logs in log/gomory_hu.log to log/gomory_hu5.log. Optional.
+	-innerConnectivity: Finds inner connectivity between all pairs of nodes. Logs in log/gomory_hu.log to log/gomory_hu5.log. Optional. Will hide option -connectivity.
+	-onlygraphic: Generates the .png from an existing povray or svg file. In this case -input contains the .pov or .svg file. Default: false. Valid parameters in this case are: render, java
+	-nographic: Omits generating the .png file.
+	-colorScaleMaxValue: Sets the maximal value for the color scale. Layers with a value or equal to this value will be represented with the same color. By default, it takes the value of the highest layer.
+	-showDegreeScale: Defines if the degree scale will be shown in the picture. Boolean (0, 1). Default: 1 (true).
+	-measure: Defines the centrality measure to be used. Possible values: 'kdense', 'mcore'. Default: 'mcore'.
+
+Note: the ratio horizontal_resolution/vertical_resolution should be 4/3 for a normal aspect ratio.
+
+You will find some example networks into "samples/" directory. 
+
+_____________________________________________________________________
+
+-References
+
+[1] R. Albert and A.-L. BarabÃ¡si, "Statistical mechanics of complex
+    networks", Rev. Mod. Phys. 74, pp. 47-, 2000.
+
+[2] L. A. N. Amaral, A.Scala, M. BarthÃ©lemy, and H. E. Stanley, 
+    "Classes of small world networks", Proc. Natl. Acad. Sci. (USA) 97, 
+    pp.11149-11152, 2000.
+
+[3] S.N. Dorogovtsev and J. F. F. Mendes, "Evolution of networks: From
+    biological nets to the Internet and WWW", Oxford University Press, 2003.
+
+[4] R. Pastor-Satorras and A. Vespignani, "Evolution and structure of the
+    Internet: A statistical physics approach", Cambridge University Press, 2004.
+
+[5] J. I. Alvarez-Hamelin, L. Dall'Asta, A. Barrat and A. Vespignani.
+    "Large scale networks fingerprinting and visualization using the 
+    k-core decomposition", Advances in Neural Information Processing 
+    Systems 18,  Y. Weiss,  B. SchÃ¶lkopf and J. Platt ed., MIT Press, 
+    Cambridge, MA, pp 41-50, 2006.
+
+[6] M. G. Beiró, J. I. Alvarez-Hamelin and J. R. Busch. "A low complexity
+    visualization tool that helps to perform complex systems analysis",
+    New Journal of Physics, Focus on Visualization in Physics, 2008.
+
+[7] V.Batagelj and M. Zaversnik, "Generalized Cores", 
+    CoRR: arXiv.org/cs.DS/020203, 2002.
+

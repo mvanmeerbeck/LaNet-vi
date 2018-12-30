@@ -1,0 +1,73 @@
+Changes:
+--------
+
+LaNet-vi 3.0.1
+	- Bug with Gsl/BLAS linking solved.
+
+LaNet-vi 3.0.0
+	- LaNet-vi incorporates k-dense decomposition into visualization!
+
+LaNet-vi 2.2.3
+	- New option to color the nodes.
+
+LaNet-vi 2.2.2
+	- Bug with weighted graphs corrected.
+	- Thanks to Dominik Dahlem!
+
+LaNet-vi 2.2.1
+	- Bug with parameter -output solved.
+	- Bug with #include's in povray_renderer.cpp and svg_renderer.cpp solved.
+	- Thanks to Udi Weinsberg for both!
+
+LaNet-vi 2.2.0 
+        - C++ implementation! 
+        - Core-connectivity analysis improved 
+	- New connectivity analysis with Gomory-Hu algorithm
+	- HTML help
+
+LaNet-vi 2.1.3
+
+	- Bug in names file solved, in case the names file contains nodes that do not exist in the graph.
+	- Bug in coresfile option solved.
+
+LaNet-vi 2.1.2
+
+        - Improvements on weighted graphs algorithm.
+        - Extension of cliques decomposition to every central core of a connected component.
+        - Use of hashing to access the graph nodes faster.
+
+LaNet-vi 2.1.1
+
+	- Weighted graphs (weights are float numbers assigned to each edge).
+	- Improvements on node names algorithm.
+
+LaNet-vi 2.1.0
+
+	- Central core decomposed into cliques. New algorithm for cliques disposition on circular sectors.
+	- k-core-connectivity analysis.
+	- Nodes are positioned taking into account its neighbours' positions, so that the cliques in the central core organize the deployment of the whole graph.
+	- Nodes labeling.
+	- SVG compatibility, with option for edges' transparency (only for Linux now).
+	
+LaNet-vi 2.0.4
+
+	- Improved display of degree references
+	- Solved problem that appeared when networks didn't have nodes in the first cores.
+	- Solved problem when displaying all edges (they were not all shown even if edges was 1.0, reported by Duygu Balcan)
+
+LaNet-vi 2.0.3
+
+	- Solved stack overflow bug for big networks when computing clusters.
+
+LaNet-vi 2.0.2
+
+	- Resolved conflict with povray when an edge extremes were coincident (Reported by Frank E. Walter)
+
+LaNet-vi 2.0.1
+
+	- k-core decomposition file with (node,shell-index) added
+	- Visualizer to look and zoom the generated png files. Java JVM is needed to use this feature.
+	- Compatibility with Network Workbench (NWB) format (http://nwb.slis.indiana.edu).
+	- Version for MS Windows added
+	- Improvements on input file parsing
+	
